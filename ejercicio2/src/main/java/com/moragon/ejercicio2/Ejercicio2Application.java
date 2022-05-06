@@ -40,22 +40,39 @@ Buscar los subalgoritmos necesarios y determinar si son procedimientos o funcion
 Escribe el algoritmo principal, asumiendo que tiene a su disposición las funciones y procedimientos definidos previamente.
 Escribir las funciones y procedimientos.*/
         String[] inicial = inicializar(new String[7]);
+        for (int i = 0; i < 7; i++){
+            System.out.print(inicial[i]);
+        }
+        System.out.println("\n");
+        for (int i = 0; i < 7; i++){
+            System.out.print(moverOvejas(inicial)[i]);
+        }
 
 
     }
 
     private static String[] inicializar(String[] vacio){
-        for(int i=0; i<vacio.length; i++){
+        for(int i=0; i<7; i++){
             //🐏🐏🐏 🔩 🐑🐑🐑
-            if(i < 4){
+            if(i < 3){
                 vacio[i] = "🐏";
-            }else if(i > 4 && i < vacio.length-1){
+            }else if(i > 3){
                 vacio[i] = "🐑";
             }
-            vacio[4]= "🔩";
-            vacio[vacio.length-1] = " ";
+            vacio[3]= "🔩";
         }
         return vacio;
+
+    }
+    private static String[] moverOvejas(String[] orden){
+        for(int i=0; i<6; i++){
+            if(orden[i].equals("🔩")&& orden[i+1].equals("🐑")){
+                orden[i] = "🐑";
+                orden[i+1] = "🔩";
+                return moverOvejas(orden);
+            }
+        }
+        return orden;
 
     }
 
