@@ -1,5 +1,9 @@
 package com.moragon.ejercicio2;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Ejercicio2Application {
 
     public static void main(String[] args) {
@@ -47,7 +51,8 @@ Escribir las funciones y procedimientos.*/
         for (int i = 0; i < 7; i++){
             System.out.print(moverOvejas(inicial)[i]);
         }
-
+        System.out.println("\n");
+        moverCordenos(new ArrayList<>(Arrays.asList(moverOvejas(inicial)))).stream().forEach(System.out::print);
 
     }
 
@@ -74,6 +79,14 @@ Escribir las funciones y procedimientos.*/
         }
         return orden;
 
+    }
+    private static List<String> moverCordenos(List<String> orden){
+        if(orden.get(0).equals("🐏")){
+            orden.remove(orden.get(0));
+            orden.add("🐏");
+            return moverCordenos(orden);
+        }
+        return orden;
     }
 
 }
