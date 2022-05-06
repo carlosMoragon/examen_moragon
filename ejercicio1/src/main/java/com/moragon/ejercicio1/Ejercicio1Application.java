@@ -15,20 +15,24 @@ public class Ejercicio1Application {
 
     }
 
-    private static int @NotNull [] devolverTabla(){
-        int[] tabla = new int[10];
-        for (int i = 0; i < tabla.length; i++) {
-            tabla[i] = (int) (Math.random() * 10);
-            //System.out.println(tabla[i]);
+    private static int @NotNull [][] devolverTabla(){
+        int[][] tabla = new int[10][10];
+        for (int i = 0; i < 10; i++) {
+            for(int j=0; j<10;j++) {
+                tabla[i][j] = (int) (Math.random() * 10);
+                //System.out.println(tabla[i]);
+            }
         }
         return tabla;
     }
     @Contract(pure = true)
-    private static int mayorNumero(int @NotNull [] tabla){
+    private static int mayorNumero(int @NotNull [][] tabla){
         int mayor = 0;
-        for (int i = 0; i < tabla.length; i++) {
-            if(tabla[i]> mayor){
-                mayor = tabla[i];
+        for (int i = 0; i < 10; i++) {
+            for(int j=0; j<10;j++) {
+                if(tabla[i][j] > mayor){
+                    mayor =tabla[i][j];
+                }
             }
         }
         return mayor;
